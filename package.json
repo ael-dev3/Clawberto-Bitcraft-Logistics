@@ -1,0 +1,23 @@
+{
+  "name": "clawberto-bitcraft-logistics",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A static BitCraft logistics prototype for matching cargo requests, ferry routes, and resource delivery offers.",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm test && npm run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "latest",
+    "jsdom": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "vitest": "latest"
+  }
+}
