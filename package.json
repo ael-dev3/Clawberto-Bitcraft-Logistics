@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "A static BitCraft logistics prototype for matching cargo requests, ferry routes, and resource delivery offers.",
+  "description": "A static BitCraft player inventory and location tracking prototype powered by public Bitjita data.",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc --noEmit && vite build",

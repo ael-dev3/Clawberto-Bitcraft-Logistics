@@ -2,24 +2,25 @@
 
 **Live prototype:** https://ael-dev3.github.io/Clawberto-Bitcraft-Logistics/
 
-Clawberto BitCraft Logistics is a static prototype for a player-to-player logistics board: resource delivery requests, ferry routes, carrier offers, and seller/buyer matching for BitCraft Online.
+Clawberto BitCraft Logistics now starts from the player, not a public board: enter an in-game name and the static site loads that character's public Bitjita profile, location, inventory/storage summary, and market-order counts.
 
-The point is to test the workflow Ael described in Discord: instead of one person manually channeling every request, the board matches a buyer or requester with sellers, haulers, ferry operators, or route legs.
+The logistics board comes after this. The first useful step is knowing what the player actually has, where it is stored, and where the character currently is.
 
 ## Prototype features
 
-- Request and offer board for cargo deliveries, ferry routes, market buys, resource sales, and escorts.
-- Matching engine that scores listings by service compatibility, route coverage, cargo overlap, capacity, urgency, and posted payout.
-- BitCraft region math using the same 5×5 world model from the prior Clawberto BitCraft map repo.
-- BitCraft Map deep links for origin and destination inspection.
-- Discord-ready handoff brief generator for manual coordination.
-- Local-first form entries saved in the browser with no backend required.
+- In-game name lookup through Bitjita's public player search API.
+- Public player profile snapshot with online status, entity ID, last update, and current public location fields.
+- Inventory summarizer that aggregates pockets into top items, total quantity, occupied slots, and storage locations.
+- Market order counts for the tracked player.
+- BitCraft Map deep links for the tracked location.
+- Static GitHub Pages compatible fetch path via a CORS proxy because Bitjita does not send browser CORS headers for Pages.
+- Old request/offer matching logic is still tested as a later logistics layer, but it is no longer the first UI.
 
 ## Sources and prior work read
 
-- `ael-dev3/Clawberto-Bitcraft` for Region 12 map overlay, live Bitjita notes, coordinate scaling, and region math.
+- `ael-dev3/Clawberto-Bitcraft` for Region 12 map overlay, Bitjita notes, coordinate/location fields, and region math.
 - `ael-dev3/Clawberto-Bitcraft-Library` for Bitjita/BitCraft Map source notes and static GitHub Pages structure.
-- Public BitCraft tools: BitPlanner, Brico, BitCraft Map, HexaVia, and Clockwork Labs' public BitCraft server repo.
+- Public Bitjita API docs at https://bitjita.com/docs/api.
 
 See [`docs/research-notes.md`](docs/research-notes.md) for the implementation notes.
 
@@ -44,12 +45,12 @@ https://ael-dev3.github.io/Clawberto-Bitcraft-Logistics/
 
 This is intentionally a static prototype. A production version should add:
 
-- Accounts or verified Discord login.
-- Durable listing storage.
-- Reputation, completion status, and moderation.
-- Notifications for matched routes.
-- Optional escrow/collateral fields if the community needs trust guarantees.
-- SpaceTimeDB or another realtime backend only after the static workflow proves useful.
+- Verified player ownership through Bitjita chat auth or Discord login.
+- Durable saved tracking profiles.
+- Item-to-haul-request generation from selected inventory rows.
+- Notifications when inventory/location changes.
+- Carrier matching after the inventory source of truth is useful.
+- A small backend/proxy if the public CORS proxy becomes unreliable.
 
 ## Not affiliated
 
